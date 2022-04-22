@@ -59,7 +59,7 @@ public class CasosController {
 	
 	//Query
 	@GetMapping("/casos/{UserId}")
-	public List<Casos> getfindByUserId(@PathVariable Integer UserId) {
+	public List<String> getfindByUserId(@PathVariable Integer UserId) {
 		return casosRepository.findByUserId(UserId);
 	}
 
