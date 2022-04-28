@@ -68,6 +68,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.PUT, "/api/v1/books/**").hasRole("ADMIN")
 			.antMatchers(HttpMethod.DELETE, "/api/v1/books/**").hasRole("ADMIN")
 			*/
+				 /*
 			.anyRequest().authenticated() //For any other request, you do not need specific role but still need to be authenticated. 
 			.and() 
 			.formLogin()//authentication method
@@ -77,8 +78,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.and() 
 			.httpBasic() //authentication method (allow test postman POST,DELETE,PUT) 
 			.and() 
-			.logout();//http://localhost:8080/login?logout
-
+			.logout();//http://localhost:8080/login?logout*/
+			 .anyRequest().authenticated() //For any other request, you do not need specific role but still need to be authenticated.
+			 .and()
+			 .formLogin()//authentication method
+			 .and()
+			 .httpBasic() //authentication method (allow test postman POST,DELETE,PUT)
+			 .and()
+			 .logout();//http://localhost:8080/login?logout
 
 
 

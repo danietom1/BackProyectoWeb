@@ -26,13 +26,7 @@ public class Casos {
                 Caso = caso;
         }
 
-        public User getId() {
-                return user;
-        }
 
-        public void setId(User id) {
-                this.user = id;
-        }
 
         public String getCaso() {
                 return Caso;

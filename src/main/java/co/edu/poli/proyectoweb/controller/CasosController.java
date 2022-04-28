@@ -4,12 +4,16 @@ import co.edu.poli.proyectoweb.model.Casos;
 import co.edu.poli.proyectoweb.model.User;
 import co.edu.poli.proyectoweb.repository.CasosRepository;
 import co.edu.poli.proyectoweb.repository.UserRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@Api(tags = {"Class: CasosController"})
 @RestController // Defines that this class is a spring bean
 @RequestMapping("/proyecto")
 public class CasosController {
@@ -23,7 +27,9 @@ public class CasosController {
 	private UserRepository userRepository;
 	
 	@GetMapping("/casos")
-	public List<Casos> getAllBooks() {
+	@ApiOperation(value = "*** Service Method Get All Casss ***", notes = "*** Get All Customers from MySQL\\\\WebApp ***")
+	@ApiResponses(value = {@ApiResponse(code = 404, message = "*** Error Get All Customers!!! ***")})
+	public List<Casos> getAllCasos() {
 		// The BookRepository is already injected and you can use it
 		return casosRepository.findAll();
 	}
@@ -43,7 +49,6 @@ public class CasosController {
 	public Casos updateBook(@PathVariable Integer id, @RequestBody Casos casoNew) {
 		Casos casodb = casosRepository.findById(id).get();
 
-		casodb.setId(casoNew.getId());
 		casodb.setCaso(casoNew.getCaso());
 
 		casosRepository.save(casodb);
