@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = {"Class: CorreoController"})
 @RestController
+@RequestMapping("/proyecto")
 public class CorreoController {
 
     @Autowired
@@ -27,9 +28,9 @@ public class CorreoController {
         "attachments" : ["/Users/wilsonsoto/Downloads/TransaccionPNCBANK.pdf"]
     }
     */
-    @RequestMapping(value = "/api/v1/msg", method= RequestMethod.GET)
+    @RequestMapping(value = "/msg", method= RequestMethod.GET)
     @ApiOperation(value = "*** Service Method Get Send Email ***", notes = "*** Send confirmation Email\\\\WebApp ***")
-    @ApiResponses(value = {@ApiResponse(code = 404, message = "*** Error Get All Casos!!! ***")})
+    @ApiResponses(value = {@ApiResponse(code = 404, message = "*** Error Sending Email!!! ***")})
     public String sendEmail(@RequestBody Correo correo){
         notificationService.sendEmail(correo);
         return "Email sent successfully";
