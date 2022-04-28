@@ -26,14 +26,14 @@ public class SwaggerConfig {
 				.paths(PathSelectors.any())
 				.build()
 				.apiInfo(UserApiInfo())
-				.tags(new Tag("Class: CasosController", "*** Casos Controller ***"));
+				.tags(new Tag("Class: CasosController", "*** Casos Controller ***"),new Tag("Class: CorreoController", "*** Correo Controller ***"));
 	}
 
 	private ApiInfo UserApiInfo() {
 		return new ApiInfoBuilder()
 				.title("My Spring Boot REST API")
 				.description("Customer REST API")
-				.contact(new Contact("Web App Mongo", "", "wsoto@poligran.edu.co"))
+				.contact(new Contact("Contacto - Yesid Sanabria y Daniel Nieto", "", "yesanabria2@poligran.edu.co;danietom1@poligran.edu.co"))
 				.version("0.0.1")
 				.build();
 	}

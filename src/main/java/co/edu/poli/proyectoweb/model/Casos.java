@@ -11,7 +11,7 @@ public class Casos {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer idCaso;
 
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne
         @JoinColumn(name = "user_id")
         private User user;
 
