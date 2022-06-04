@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
+
 @Api(tags = {"Class: CasosController"})
 @RestController // Defines that this class is a spring bean
 @RequestMapping("/proyecto")
@@ -52,7 +54,7 @@ public class CasosController {
 		return casosRepository.save(caso);
 	}
 
-	@PutMapping("/casos/{id}")
+	@PutMapping("/caso/{id}")
 	@ApiOperation(value = "*** Service Method Put Caso ***", notes = "*** Update Caso into MySQL\\\\WebApp ***")
 	@ApiResponses(value = {@ApiResponse(code = 404, message = "*** Update Error  ***")})
 	public Casos updateCaso(@PathVariable Integer id, @RequestBody Casos casoNew) {
@@ -74,11 +76,11 @@ public class CasosController {
 	}
 	
 	//Query
-	@GetMapping("/casos/{UserId}")
+	@GetMapping("/casos/{UserEmail}")
 	@ApiOperation(value = "*** Service Method Get All Casos from User ***", notes = "*** Get All Casos from UserID\\\\WebApp ***")
 	@ApiResponses(value = {@ApiResponse(code = 404, message = "*** Get Error - UserID not Found  ***")})
-	public List<Casos> getfindByUserId(@PathVariable Integer UserId) {
-		return casosRepository.findByUserId(UserId);
+	public List<Casos> getfindByUserId(@PathVariable String UserEmail) {
+		return casosRepository.findByUserId(UserEmail);
 	}
 
 	
@@ -89,6 +91,14 @@ public class CasosController {
 	public String createCasosList(@RequestBody List<Casos> casos) {
 		casosRepository.saveAll(casos);
 		return "done";
+	}
+
+	@GetMapping("/user/{UserEmail}")
+	@ApiOperation(value = "*** Service Method Get User ***", notes = "***  Associate Caso with User into MySQL\\\\WebApp ***")
+	@ApiResponses(value = {@ApiResponse(code = 404, message = "*** Put Error - UserID or CasoId not found ***")})
+	public User findByEmail(@PathVariable String UserEmail) {
+		User user = userRepository.findByEmail(UserEmail);
+		return user;
 	}
 
 	@PutMapping("/caso/{idUsuario}/{idCaso}")
@@ -104,5 +114,9 @@ public class CasosController {
 		casosRepository.save(caso);
 		return caso;
 	}
+
+
+
+
 	
 }

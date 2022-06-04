@@ -1,5 +1,7 @@
 package co.edu.poli.proyectoweb.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 
@@ -15,18 +17,19 @@ public class Casos {
         @JoinColumn(name = "user_id")
         private User user;
 
+        private String NombreCaso;
+
         private String Caso;
 
         public Casos() {
         }
 
-        public Casos(Integer idCaso, User user, String caso) {
+        public Casos(Integer idCaso, User user, String nombreCaso, String caso) {
                 this.idCaso = idCaso;
                 this.user = user;
+                NombreCaso = nombreCaso;
                 Caso = caso;
         }
-
-
 
         public String getCaso() {
                 return Caso;
@@ -50,5 +53,13 @@ public class Casos {
 
         public void setUser(User idUsuario) {
                 this.user = idUsuario;
+        }
+
+        public String getNombreCaso() {
+                return NombreCaso;
+        }
+
+        public void setNombreCaso(String nombreCaso) {
+                NombreCaso = nombreCaso;
         }
 }

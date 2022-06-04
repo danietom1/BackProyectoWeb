@@ -7,10 +7,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "http://localhost:4200")
 
 @Api(tags = {"Class: CorreoController"})
 @RestController
@@ -28,7 +27,7 @@ public class CorreoController {
         "attachments" : ["/Users/wilsonsoto/Downloads/TransaccionPNCBANK.pdf"]
     }
     */
-    @RequestMapping(value = "/msg", method= RequestMethod.GET)
+    @RequestMapping(value = "/msg", method= RequestMethod.PUT)
     @ApiOperation(value = "*** Service Method Get Send Email ***", notes = "*** Send confirmation Email\\\\WebApp ***")
     @ApiResponses(value = {@ApiResponse(code = 404, message = "*** Error Sending Email!!! ***")})
     public String sendEmail(@RequestBody Correo correo){
